@@ -1,0 +1,20 @@
+{
+  "name": "@hscmap/angle",
+  "version": "0.0.0",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "scripts": {
+    "prepublish": "tsc",
+    "test": "ts-node ./spec/*.ts"
+  },
+  "devDependencies": {
+    "@types/sprintf-js": "0.0.27",
+    "ts-node": "^3.3.0",
+    "typescript": "^2.4.2"
+  },
+  "homepage": "https://github.com/michitaro/angle",
+  "repository": "github:michitaro/angle",
+  "dependencies": {
+    "sprintf-js": "^1.1.1"
+  }
+}
