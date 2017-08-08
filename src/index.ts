@@ -1,6 +1,9 @@
 import { sprintf } from 'sprintf-js'
 
 
+export type V3 = [number, number, number]
+
+
 export class Angle {
     private _rad: number
 
@@ -33,6 +36,38 @@ export class EquatorialCoord {
     static parse(s: string) {
         const { a, d } = parseEquatorialCoord(s)
         return new EquatorialCoord(a, d)
+    }
+
+    get xyz(): V3 {
+        const a = this.a.rad
+        const d = this.d.rad
+        const cosd = Math.cos(d)
+        return [
+            cosd * Math.cos(a),
+            cosd * Math.sin(a),
+            Math.sin(d)
+        ]
+    }
+
+    static fromXyz([x, y, z]: V3) {
+        const r2 = x * x + y * y
+        if (r2 == 0) {
+            return EquatorialCoord.fromRad(0, z > 0 ? Math.PI / 2 : -Math.PI / 2)
+        }
+        else {
+            const PI2 = 2 * Math.PI
+            const a = (Math.atan2(y, x) + PI2) % PI2
+            const d = Math.atan2(z, Math.sqrt(r2))
+            return EquatorialCoord.fromRad(a, d)
+        }
+    }
+
+    static fromRad(a: number, d: number) {
+        return new EquatorialCoord(Angle.fromRad(a), Angle.fromRad(d))
+    }
+
+    static fromDeg(a: number, d: number) {
+        return new EquatorialCoord(Angle.fromDeg(a), Angle.fromDeg(d))
     }
 
     toString() {
