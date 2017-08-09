@@ -118,6 +118,10 @@ function parseEquatorialCoord(s: string) {
         throw new Error(`invalid coord format: '${s}': numbers=${JSON.stringify(numbers)}`)
     }
 
+    if (numbers.length == 2) {
+        return EquatorialCoord.fromDeg(Number(numbers[0]), Number(numbers[1]))
+    }
+
     return new EquatorialCoord(
         parseSexadecimal(numbers.slice(0, numbers.length / 2), 15),
         parseSexadecimal(numbers.slice(numbers.length / 2), 1),

@@ -1,3 +1,4 @@
+export declare type V3 = [number, number, number];
 export declare class Angle {
     private _rad;
     private constructor();
@@ -16,6 +17,10 @@ export declare class EquatorialCoord {
     d: Angle;
     constructor(a: Angle, d: Angle);
     static parse(s: string): EquatorialCoord;
+    readonly xyz: V3;
+    static fromXyz([x, y, z]: V3): EquatorialCoord;
+    static fromRad(a: number, d: number): EquatorialCoord;
+    static fromDeg(a: number, d: number): EquatorialCoord;
     toString(): {
         a: string;
         d: string;

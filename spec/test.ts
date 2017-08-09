@@ -45,6 +45,13 @@ assertEqual(Angle.fromDeg(1).asec, 3600)
 })()
 
 
+!(function simple_coord_parse() {
+    const eq = EquatorialCoord.parse(`29 41`)
+    assertEqual(eq.a.deg, 29)
+    assertEqual(eq.d.deg, 41)
+})()
+
+
 !(function m81_coord_parse() {
     const eq = EquatorialCoord.parse(`(RA, α) 09h 55m 33.17306s (Dec, δ) +69° 03′ 55.0610″`)
     assertEqual(eq.a.deg, 148.88822108386302)
