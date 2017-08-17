@@ -5,16 +5,15 @@ export type V3 = [number, number, number]
 
 
 export class Angle {
-    private _rad: number
+    rad: number
 
     private constructor(rad: number) {
-        this._rad = rad
+        this.rad = rad
     }
 
-    get rad() { return this._rad }
-    get deg() { return rad2deg(this._rad) }
-    get amin() { return rad2amin(this._rad) }
-    get asec() { return rad2asec(this._rad) }
+    get deg() { return rad2deg(this.rad) }
+    get amin() { return rad2amin(this.rad) }
+    get asec() { return rad2asec(this.rad) }
 
     static fromRad(rad: number) { return new Angle(rad) }
     static fromDeg(deg: number) { return new Angle(deg2rad(deg)) }

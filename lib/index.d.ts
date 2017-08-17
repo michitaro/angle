@@ -1,8 +1,7 @@
 export declare type V3 = [number, number, number];
 export declare class Angle {
-    private _rad;
+    rad: number;
     private constructor();
-    readonly rad: number;
     readonly deg: number;
     readonly amin: number;
     readonly asec: number;
