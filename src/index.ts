@@ -26,6 +26,10 @@ export class Angle {
         const s = Math.abs(totalSeconds)
         return sprintf(`${sign}%02d:%02d:%07.4f`, Math.floor(s / 3600), Math.floor(s / 60 % 60), s % 60)
     }
+
+    clone() {
+        return new Angle(this.rad)
+    }
 }
 
 
@@ -74,6 +78,10 @@ export class EquatorialCoord {
             a: this.a.sexadecimal(15, false),
             d: this.d.sexadecimal(1, true),
         }
+    }
+
+    clone() {
+        return new EquatorialCoord(this.a.clone(), this.d.clone())
     }
 }
 
