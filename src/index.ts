@@ -116,6 +116,14 @@ export function rad2asec(rad: number) {
     return 206264.806247096 * rad
 }
 
+const PI2 = 2 * Math.PI
+
+export function wrapTo2Pi(x: number) {
+    if (x < 0)
+        return PI2 - (-x % (PI2))
+    else
+        return x % PI2
+}
 
 function parseEquatorialCoord(s: string) {
     s = s.replace(/([\+\-])\s+(\d)/, '$1$2')
