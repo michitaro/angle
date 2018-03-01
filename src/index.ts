@@ -126,7 +126,7 @@ export function wrapTo2Pi(x: number) {
 }
 
 function parseEquatorialCoord(s: string) {
-    s = s.replace(/([\+\-])\s+(\d)/, '$1$2')
+    s = s.replace(/([\+\-])\s+(\d)/, '$1$2').replace(/\[\d+\]/g, '')
     const numbers = s.match(/(?:[\+\-]?[\d\.]+)/g)
 
     if (numbers == null || numbers.length < 2 || numbers.length % 2 != 0) {
