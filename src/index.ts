@@ -144,7 +144,7 @@ function parseEquatorialCoord(s: string) {
 }
 
 
-function parseSexadecimal(numbers: string[], hour2deg: number) {
+export function parseSexadecimal(numbers: string[], hour2deg: number) {
     if (numbers.length == 0 || numbers.length > 3) {
         throw new Error(`invalid coord format: '${numbers.join(', ')}'`)
     }
