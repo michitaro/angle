@@ -98,7 +98,7 @@ export function amin2rad(amin: number) {
 
 export function asec2rad(asec: number) {
     // return arcsec / (3600 * 180) * Math.PI
-    return 0.000004848136811
+    return 0.000004848136811 * asec
 }
 
 export function rad2deg(rad: number) {
