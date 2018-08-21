@@ -126,10 +126,11 @@ export function wrapTo2Pi(x: number) {
 }
 
 function parseEquatorialCoord(s: string) {
+    s = s.replace(/−/g, '-')
     s = s.replace(/([\+\-])\s+(\d)/, '$1$2').replace(/\[\d+\]/g, '')
     const numbers = s.match(/(?:[\+\-]?[\d\.]+)/g)
 
-    if (numbers == null || numbers.length < 2 || numbers.length % 2 != 0) {
+    if (numbers == null || numbers.length < 2) {
         throw new Error(`invalid coord format: '${s}': numbers=${JSON.stringify(numbers)}`)
     }
 
@@ -138,8 +139,8 @@ function parseEquatorialCoord(s: string) {
     }
 
     return new EquatorialCoord(
-        parseSexadecimal(numbers.slice(0, numbers.length / 2), 15),
-        parseSexadecimal(numbers.slice(numbers.length / 2), 1),
+        parseSexadecimal(numbers.slice(0, Math.floor(numbers.length / 2)), 15),
+        parseSexadecimal(numbers.slice(Math.floor(numbers.length / 2)), 1),
     )
 }
 
