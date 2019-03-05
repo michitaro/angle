@@ -5,12 +5,21 @@
   "types": "./lib/index.d.ts",
   "scripts": {
     "prepare": "tsc",
-    "test": "ts-node ./spec/*.ts"
+    "test": "mocha --require espower-typescript/guess 'spec/**/*.ts'",
+    "test:watch": "mocha --require espower-typescript/guess  --watch-extensions ts --watch 'spec/**/*.ts'"
+  },
+  "directories": {
+    "test": "spec/"
   },
   "devDependencies": {
+    "@types/mocha": "^5.2.6",
+    "@types/node": "^11.10.4",
     "@types/sprintf-js": "^1.1.0",
+    "espower-typescript": "^9.0.1",
+    "mocha": "^6.0.2",
+    "power-assert": "^1.6.1",
     "ts-node": "^7.0.1",
-    "typescript": "^3.0.1"
+    "typescript": "^3.3.3333"
   },
   "homepage": "https://github.com/michitaro/angle",
   "repository": "github:michitaro/angle",

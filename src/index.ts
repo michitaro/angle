@@ -125,10 +125,14 @@ export function wrapTo2Pi(x: number) {
         return x % PI2
 }
 
+
+const NUMBER = /[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?/g
+
+
 function parseEquatorialCoord(s: string) {
     s = s.replace(/−/g, '-')
     s = s.replace(/([\+\-])\s+(\d)/, '$1$2').replace(/\[\d+\]/g, '')
-    const numbers = s.match(/(?:[\+\-]?[\d\.]+)/g)
+    const numbers = s.match(NUMBER)
 
     if (numbers == null || numbers.length < 2) {
         throw new Error(`invalid coord format: '${s}': numbers=${JSON.stringify(numbers)}`)
